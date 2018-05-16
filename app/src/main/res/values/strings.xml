@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DeepHeart</string>
+
+
+    <!--网络相关-->
+    <string name="loading">加载中...</string>
+
+    <string name="system_is_busy">系统繁忙！请稍候再试</string>
+    <string name="no_net">没有网络</string>
+    <string name="network_connection_timeout">网络连接超时</string>
+
+</resources>
