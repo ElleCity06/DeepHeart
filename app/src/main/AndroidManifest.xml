@@ -2,20 +2,133 @@
 <manifest package="com.deepheart.ellecity06.deepheart"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
+    <meta-data
+        android:name="design_width"
+        android:value="1080"></meta-data>
+    <meta-data
+        android:name="design_height"
+        android:value="1920"></meta-data>
+    <!--<meta-data-->
+    <!--android:name="UMENG_APPKEY"-->
+    <!--android:value="5b0f51b2f29d9808f700005e"/>-->
+    <!--<meta-data-->
+    <!--android:name="UMENG_CHANNEL"-->
+    <!--android:value="${UMENG_CHANNEL_VALUE}"/>-->
+
     <application
+        android:name=".app.DeepHeartApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Test2Activity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.TestActivity">
+        </activity>
+        <!--欢迎界面-->
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NotitleTheme">
+
+        </activity>
+        <!--主界面-->
+        <activity
+            android:name=".ui.activity.DHMianActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <!--登录-->
+        <activity
+            android:name=".ui.activity.user.LoginActivty"
+            android:screenOrientation="portrait"
+            android:theme="@style/NotitleTheme_login"></activity>
+        <!--注册-->
+        <activity
+            android:name=".ui.activity.user.RegistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NotitleTheme_login"></activity>
+        <!--忘记密码-->
+        <activity
+            android:name=".ui.activity.user.ForgetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NotitleTheme_login"></activity>
+        <!--绑定手机号码-->
+        <activity
+            android:name=".ui.activity.user.BindPhoneActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NotitleTheme_login"></activity>
+
+        <!--第三方登录和分享的-->
+        <!--微博-->
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity
+            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            >
+        </activity>
+
+        <activity
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+        <!--微信-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <!--QQ。替换key -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="tencent100424468"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     </application>
 
 </manifest>

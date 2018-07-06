@@ -9,4 +9,30 @@
     <string name="no_net">没有网络</string>
     <string name="network_connection_timeout">网络连接超时</string>
 
+
+    <!--异常-->
+    <string name="exception_err">非常抱歉，发生软件运行错误，我们会尽快解决该问题，请关注版本更新。</string>
+    <!--底部tab-->
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_motif">主题</string>
+    <string name="main_tab_community">社区</string>
+    <string name="main_tab_mine">我的</string>
+    <!--第三方相关-->
+    <string name="weixin">微信</string>
+    <string name="qq">QQ</string>
+    <string name="weibo">新浪微博</string>
+    <string name="friends">朋友圈</string>
+    <string name="qq_zone">QQ空间</string>
+
+    <!--登录相关-->
+    <string name="regist_psw_toshort">密码太短啦</string>
+    <string name="psw_not_equal">两次密码不一致</string>
+    <string name="regist_success">注册成功</string>
+    <string name="phone_error">请检查您的手机号是否正确</string>
+    <string name="sms_send_success">短信发送成功，请注意查收</string>
+    <string name="sms_send_error">短信发送失败，请检查网络</string>
+    <string name="sms_send_again">重新发送</string>
+    <string name="sms_code_error">验证码有误，请检查</string>
+    <string name="reset_psw_success">密码设置成功</string>
+    <string name="net_error_reset">网络错误，请检查网络</string>
 </resources>

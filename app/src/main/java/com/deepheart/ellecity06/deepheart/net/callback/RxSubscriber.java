@@ -3,7 +3,7 @@ package com.deepheart.ellecity06.deepheart.net.callback;
 import android.content.Context;
 
 import com.deepheart.ellecity06.deepheart.R;
-import com.deepheart.ellecity06.deepheart.app.Constant;
+import com.deepheart.ellecity06.deepheart.app.Constants;
 import com.deepheart.ellecity06.deepheart.app.DeepHeartApplication;
 import com.deepheart.ellecity06.deepheart.utils.LogUtil;
 import com.deepheart.ellecity06.deepheart.utils.NetWorkUtils;
@@ -82,12 +82,12 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
 
         // 网络
         if (!NetWorkUtils.isNetConnected(DeepHeartApplication.getAppContext())) {
-            _onError(Constant.WITHOUT_NETWORK);
+            _onError(Constants.WITHOUT_NETWORK);
         } else { // 其它
-            if (exception.contains(Constant.SOCKETTIMEOUTEXCEPTION)) {
-                _onError(Constant.NETWORK_CONNECTION_TIMEOUT);
+            if (exception.contains(Constants.SOCKETTIMEOUTEXCEPTION)) {
+                _onError(Constants.NETWORK_CONNECTION_TIMEOUT);
             } else {
-                _onError(Constant.NET_ERROR);
+                _onError(Constants.NET_ERROR);
             }
         }
 

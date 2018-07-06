@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/toast"
         android:gravity="center"
-        android:padding="@dimen/y6">
+        android:padding="@dimen/dp_7">
 
         <TextView
             android:id="@+id/toast_text"
@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textColor="#fff"
-            android:textSize="@dimen/y18"/>
+            android:textSize="@dimen/sp_18"/>
 
     </LinearLayout>
 

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -7,18 +8,90 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.deepheart.ellecity06.deepheart"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+//    //多渠道打包占位符
+//    productFlavors {
+//
+//        aacompany {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "本公司"]
+//        }
+//        mumayi {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "木蚂蚁市场"]
+//        }
+//        wandoujia {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "豌豆荚市场"]
+//        }
+//        meizu {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "魅族市场"]
+//        }
+//        lianxiang {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "联想市场"]
+//        }
+//        yingyongbao {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "应用宝市场"]
+//        }
+//        xiaomi {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "小米市场"]
+//        }
+//        huawei {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "华为市场"]
+//        }
+//        shouji360 {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "手机360市场"]
+//        }
+//        oppomobile {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "OPPO市场"]
+//        }
+//        liqu {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "历趣市场"]
+//        }
+//        sogou {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "搜狗市场"]
+//        }
+//        vivo {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "VIVO市场"]
+//        }
+//
+//    }
+    //配置apk输出目录以及名称
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (variant.buildType.name.equals('release')) {
+//                //生成apk名字的格式：fortunecat_v1.0.0_2016-06-22_baidu.apk
+//                //可自定义自己想要生成的格式
+//                def fileName = "deepheart_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${variant.productFlavors[0].name}_release.apk"
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//            if (variant.buildType.name.equals('debug')) {
+//                //生成apk名字的格式：fortunecat_v1.0.0_2016-06-22_baidu.apk
+//                //可自定义自己想要生成的格式
+//                def fileName = "deepheart_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${variant.productFlavors[0].name}_debug.apk"
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//        }
+//    }
 }
 
 dependencies {
@@ -26,14 +99,26 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:27.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-
+    //布局适配
+    compile 'com.zhy:autolayout:1.4.5'
     // bmob 后端云
+    //rx 套装
+
+    // 黄油刀
+    //glide图库
+    //Kotlin支持库
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    刷新支持库
+    //没有使用特殊Header，可以不加这行
+    // RecyclerView Adapter支持库
+    //    侧滑返回
+    compile 'com.android.support:support-v4:27.0.0'
+    compile 'com.android.support:appcompat-v7:27.0.0'
+    compile 'com.android.support:design:27.0.0'
+    compile 'com.android.support:cardview-v7:27.0.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'cn.bmob.android:bmob-sdk:3.4.7-aar'
     compile 'cn.bmob.android:http-legacy:1.0'
-    //rx 套装
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
@@ -43,11 +128,27 @@ dependencies {
     compile 'io.reactivex:rxjava:1.2.1'
     compile 'com.trello:rxlifecycle:0.6.1'
     compile 'com.trello:rxlifecycle-components:0.6.1'
-    //glide图库
+    compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
-    //Kotlin支持库
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.9'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //     BugLy   bug上传！
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    // 友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    // permissions
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.0@aar'
 }
 repositories {
     mavenCentral()
